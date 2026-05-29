@@ -1,6 +1,20 @@
 # Deployment Guide
 
-This guide explains how to configure environment variables for deploying the blog application.
+## GitHub Pages (frontend)
+
+1. **Pages source:** Repo **Settings → Pages → Build and deployment → Source:** GitHub Actions.
+2. **Workflow:** Pushes to `main` that touch `frontend/` run [deploy-frontend.yml](.github/workflows/deploy-frontend.yml).
+3. **Site URL:** `https://lokeshpuma.github.io/blog/` (repo name `blog` → base path `/blog/`).
+4. **Action variables** (Settings → Secrets and variables → Actions → Variables):
+   - `VITE_API_URL` — production API base URL
+   - `VITE_AUTH_API_URL` — production auth API URL
+5. **Backend CORS:** Set `FRONTEND_URL=https://lokeshpuma.github.io` (or the full Pages URL) in backend `.env`.
+
+Local GH Pages build: `cd frontend && npm run build:gh-pages`
+
+---
+
+This guide also covers environment variables for the full stack.
 
 ## Backend Configuration
 
